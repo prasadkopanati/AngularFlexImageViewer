@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header text-right">
+    <a href="/chart">Stats Chart</a>
+  </div>
+</div>
+
+<div *ngIf="isImgResizing">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-3">
+          <h4 class="">Select # of Cards per row:</h4>
+        </div>
+        <div class="col-md-3">
+          <select (change)="onRowCountChange($event.target.value)" [(value)]="itemsPerRow">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading">
+    <p>Loading...</p>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div *ngFor="let r of rows" class="container">
+      <div *ngFor="let imgPath of r['imgs']"><img class="bk-img" [src]="imgPath"></div>
+    </div>
+  </div>
+
+</div>
